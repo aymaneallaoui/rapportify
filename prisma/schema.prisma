@@ -1,0 +1,77 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model reportcategories {
+  category_id    Int              @id @default(autoincrement())
+  category_name  String           @db.VarChar(255)
+  description    String?
+  reportcategory reportcategory[]
+}
+
+model reportcategory {
+  report_id        Int
+  category_id      Int
+  reportcategories reportcategories @relation(fields: [category_id], references: [category_id], onDelete: NoAction, onUpdate: NoAction)
+  reports          reports          @relation(fields: [report_id], references: [report_id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([report_id, category_id])
+}
+
+model reports {
+  report_id      Int              @id @default(autoincrement())
+  user_id        Int
+  title          String           @db.VarChar(255)
+  content        String?
+  creation_date  DateTime?        @default(now()) @db.Timestamptz(6)
+  reportcategory reportcategory[]
+  users          users            @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction)
+  reporttag      reporttag[]
+  userreport     userreport[]
+}
+
+model reporttag {
+  report_id  Int
+  tag_id     Int
+  reports    reports    @relation(fields: [report_id], references: [report_id], onDelete: NoAction, onUpdate: NoAction)
+  reporttags reporttags @relation(fields: [tag_id], references: [tag_id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([report_id, tag_id])
+}
+
+model reporttags {
+  tag_id    Int         @id @default(autoincrement())
+  tag_name  String      @db.VarChar(255)
+  reporttag reporttag[]
+}
+
+model userreport {
+  user_id   Int
+  report_id Int
+  reports   reports @relation(fields: [report_id], references: [report_id], onDelete: NoAction, onUpdate: NoAction)
+  users     users   @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([user_id, report_id])
+}
+
+model users {
+  user_id           Int               @id @default(autoincrement()) @unique
+  username          String            @db.VarChar(255) @unique
+  email             String            @db.VarChar(255) @unique
+  password_hash     String            @db.VarChar(255)
+  subscription_plan subscription_plan @default(FREE)
+  createdAt        DateTime           @default(now())
+  reports           reports[]
+  userreport        userreport[]
+}
+
+enum subscription_plan {
+  FREE
+  BASIC
+  PREMIUM
+}
