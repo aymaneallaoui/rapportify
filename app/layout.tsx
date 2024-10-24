@@ -5,6 +5,7 @@ import { Inter } from "next/font/google";
 import { MainNav } from "@/components/layouts/MainNav";
 import SessionPRO from "@/components/SessionPRO";
 const inter = Inter({ subsets: ["latin"] });
+import Script from 'next/script'
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,6 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <Script defer src="http://sowwk88co0wsgg8c4480ggok.37.60.235.169.sslip.io/script.js" data-website-id="e1650544-cb11-4728-acb6-dd3c7821ceb0"/>
       <body className={inter.className}>
         <SessionPRO>
           <Providers>{children}</Providers>
