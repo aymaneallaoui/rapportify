@@ -53,14 +53,14 @@ export function MainNav() {
       >
         <NavbarItem>
           <Link color="primary" href="#">
-            <Button variant="ghost" radius="full" color="primary">
+            <Button variant="ghost" radius="full" color="primary" id="features-button" data-umami-event="features button">
               Features
             </Button>
           </Link>
         </NavbarItem>
         <NavbarItem>
           <Link href="#" aria-current="page">
-            <Button variant="ghost" radius="full" color="primary" data-hover>
+            <Button variant="ghost" radius="full" color="primary" id="pricing-button" data-umami-event="pricing button" data-hover>
               Pricing
             </Button>
           </Link>
