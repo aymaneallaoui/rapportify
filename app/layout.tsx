@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Script defer src="https://umami.kafka-api.site/script.js" data-website-id="b9be3800-e19b-4d99-bd34-55f85144d981"/>
+      <Script defer src="https://umami.kafka-api.site/script.js" data-website-id="8d1ecdf0-659e-41c1-9bf2-ffdf16d701c5"/>
       <body className={inter.className}>
         <SessionPRO>
           <Providers>{children}</Providers>
