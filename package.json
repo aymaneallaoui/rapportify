@@ -53,6 +53,7 @@
     "three": "^0.156.1",
     "three-stdlib": "^2.26.0",
     "typescript": "5.2.2",
+    "uuid": "^10.0.0",
     "zod": "^3.22.2"
   },
   "devDependencies": {
