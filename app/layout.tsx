@@ -19,31 +19,34 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Script>
-        var initOpts = {
-          projectKey: "H6naHVvsrfibVNQ2jnIY",
-          ingestPoint: "https://openreplay.kafka-api.site/ingest",
-          defaultInputMode: 2,
-          obscureTextNumbers: false,
-          obscureTextEmails: true,
-        };
-        var startOpts = { userID: "" };
-        (function(A,s,a,y,e,r){
-          r=window.OpenReplay=[e,r,y,[s-1, e]];
-          s=document.createElement('script');s.src=A;s.async=!a;
-          document.getElementsByTagName('head')[0].appendChild(s);
-          r.start=function(v){r.push([0])};
-          r.stop=function(v){r.push([1])};
-          r.setUserID=function(id){r.push([2,id])};
-          r.setUserAnonymousID=function(id){r.push([3,id])};
-          r.setMetadata=function(k,v){r.push([4,k,v])};
-          r.event=function(k,p,i){r.push([5,k,p,i])};
-          r.issue=function(k,p){r.push([6,k,p])};
-          r.isActive=function(){return false};
-          r.getSessionToken=function(){};
-        })("//static.openreplay.com/14.0.7/openreplay.js",1,0,initOpts,startOpts);
-      </Script>
-      <Script defer src="https://umami.kafka-api.site/script.js" data-website-id="8d1ecdf0-659e-41c1-9bf2-ffdf16d701c5"/>\
+
+<Script>
+  var initOpts = {
+    projectKey: "H6naHVvsrfibVNQ2jnIY",
+    ingestPoint: "https://openreplay.kafka-api.site/ingest",
+    defaultInputMode: 2,
+    obscureTextNumbers: false,
+    obscureTextEmails: true,
+  };
+  var startOpts = { userID: "" };
+  (function(A,s,a,y,e,r){
+    r=window.OpenReplay=[e,r,y,[s-1, e]];
+    s=document.createElement('script');s.src=A;s.async=!a;
+    document.getElementsByTagName('head')[0].appendChild(s);
+    r.start=function(v){r.push([0])};
+    r.stop=function(v){r.push([1])};
+    r.setUserID=function(id){r.push([2,id])};
+    r.setUserAnonymousID=function(id){r.push([3,id])};
+    r.setMetadata=function(k,v){r.push([4,k,v])};
+    r.event=function(k,p,i){r.push([5,k,p,i])};
+    r.issue=function(k,p){r.push([6,k,p])};
+    r.isActive=function(){return false};
+    r.getSessionToken=function(){};
+  })("//static.openreplay.com/14.0.7/openreplay.js",1,0,initOpts,startOpts);
+</Script>
+
+        
+      <Script defer src="https://umami.kafka-api.site/script.js" data-website-id="8d1ecdf0-659e-41c1-9bf2-ffdf16d701c5"/>
       <Script async defer src="https://tianji.kafka-api.site/tracker.js" data-website-id="cm2pbb7cp0001107yj49wv2qa" />
       <body className={inter.className}>
         <SessionPRO>
