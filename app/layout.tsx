@@ -6,6 +6,11 @@ import { MainNav } from "@/components/layouts/MainNav";
 import SessionPRO from "@/components/SessionPRO";
 const inter = Inter({ subsets: ["latin"] });
 import Script from 'next/script'
+import dynamic from "next/dynamic";
+
+const OpenReplayNoSSR = dynamic(() => import('@/components/open-replay'), {
+  ssr: false,
+})
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -27,6 +32,7 @@ export default function RootLayout({
         <SessionPRO>
           <Providers>{children}</Providers>
         </SessionPRO>
+        <OpenReplayNoSSR />
       </body>
     </html>
   );
