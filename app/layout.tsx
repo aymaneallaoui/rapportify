@@ -33,7 +33,7 @@ export default function RootLayout({
           <Providers>{children}</Providers>
         </SessionPRO>
         <OpenReplayNoSSR />
-        <Script type="text/javascript">
+        <Script type="text/javascript" id="lol">
           {`(function(w,d,n,u,o,t,m){w['SrecObject']=o;w[o]=w[o]||function(){
     (w[o].q=w[o].q||[]).push(arguments)},w[o].l=1*new Date();t=d.createElement(n),
     m=d.getElementsByTagName(n)[0];t.async=1;t.src=u;m.parentNode.insertBefore(t,m)
