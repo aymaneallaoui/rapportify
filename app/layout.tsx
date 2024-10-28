@@ -1,9 +1,9 @@
 import "./globals.css";
 
-import { CSPostHogProvider } from "@/components/posthog";
 import { Inter } from "next/font/google";
 import { MainNav } from "@/components/layouts/MainNav";
 import type { Metadata } from "next";
+import { PHProvider } from "@/components/posthog";
 import { Providers } from "@/components/providers";
 import Script from "next/script";
 import SessionPRO from "@/components/SessionPRO";
@@ -12,6 +12,10 @@ import dynamic from "next/dynamic";
 const inter = Inter({ subsets: ["latin"] });
 
 const OpenReplayNoSSR = dynamic(() => import("@/components/open-replay"), {
+  ssr: false,
+});
+
+const PostHogPageView = dynamic(() => import("@/components/page-views"), {
   ssr: false,
 });
 
@@ -38,10 +42,13 @@ export default function RootLayout({
         src="https://tianji.kafka-api.site/tracker.js"
         data-website-id="cm2pbb7cp0001107yj49wv2qa"
       />
-      <CSPostHogProvider>
+      <PHProvider>
         <body className={inter.className}>
           <SessionPRO>
-            <Providers>{children}</Providers>
+            <Providers>
+              <PostHogPageView />
+              {children}
+            </Providers>
           </SessionPRO>
           <OpenReplayNoSSR />
           <Script type="text/javascript" id="lol">
@@ -52,7 +59,7 @@ export default function RootLayout({
     srec('init', '94ead810-94a8-11ef-b237-9d211fa7dc12');`}
           </Script>
         </body>
-      </CSPostHogProvider>
+      </PHProvider>
     </html>
   );
 }
